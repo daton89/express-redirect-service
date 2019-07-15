@@ -10,8 +10,10 @@ if (!process.env.PROXY_URI) {
     process.exit(1)
 }
 
+dd('env %o', process.env)
+
 function proxyReqPathResolver(req) {
-    const url = `${process.env.PREFIX}${req.url}${process.env.SUFFIX}`
+    const url = `${process.env.PREFIX || ''}${req.url}${process.env.SUFFIX || ''}`
     dd('url %s', url)
     return url
 }
@@ -22,6 +24,6 @@ const proxyMiddleware = proxy(process.env.PROXY_URI, {
 
 app.use(morgan('combined'))
 
-app.get('/*', proxyMiddleware)
+app.use('/', proxyMiddleware)
 
 app.listen(process.env.PORT || 3000)
