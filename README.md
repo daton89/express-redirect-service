@@ -1,6 +1,6 @@
 ﻿# express-redirect-service
  
-Http Proxy that replace the `301 $scheme://example.com$reqiest_uri`.
+Http Proxy that replace the nginx's `301 $scheme://example.com$reqiest_uri`.
 
 After a couple of hours spent to make a simple nginx image running on docker (that worked till few months ago) i decided to build a simple http proxy to redirect old links.
 
